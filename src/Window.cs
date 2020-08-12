@@ -9,21 +9,21 @@ enum Axis
 namespace fdte
 {
 
-	public sealed class Window
+	public static class Window
 	{
 		const char _barBorder = '*';
 
-		private int Width
+		private static int Width
 		{
 			get { return TryToRetreiveWindowAxis(Axis.X); }
 		}
 
-		private int Height
+		private static int Height
 		{
 			get { return TryToRetreiveWindowAxis(Axis.Y); }
 		}
 
-		public void Render()
+		public static void Render()
 		{
 			const int barsNumber = 2;
 
@@ -40,7 +40,7 @@ namespace fdte
 			DrawHorizontalBar();
 		}
 
-		private int TryToRetreiveWindowAxis(Axis axis)
+		private static int TryToRetreiveWindowAxis(Axis axis)
 		{
 			int axisValue = 0;
 
@@ -65,7 +65,7 @@ namespace fdte
 			return axisValue;
 		}
 
-		private void DrawHorizontalBar()
+		private static void DrawHorizontalBar()
 		{
 			for (int x = 0; x < Width; x++)
 			{

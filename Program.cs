@@ -6,8 +6,7 @@ namespace fdte
 	{
 		static void Main(string[] args)
 		{
-			Window window = new Window();
-			window.Render();
+			Window.Render();
 			Console.Read(); // Prevent from writing additional console info.
 		}
 	}
