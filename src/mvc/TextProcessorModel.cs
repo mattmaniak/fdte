@@ -15,7 +15,8 @@ namespace fdte
 			}
 			catch (System.ArgumentOutOfRangeException e)
 			{
-				Console.WriteLine(e.Message);
+				Console.Error.WriteLine(e.Message);
+				System.Environment.Exit(0);
 			}
 		}
 
@@ -27,7 +28,8 @@ namespace fdte
 			}
 			catch (System.ArgumentOutOfRangeException e)
 			{
-				Console.WriteLine(e.Message);
+				Console.Error.WriteLine(e.Message);
+				System.Environment.Exit(0);
 			}
 		}
 	}
