@@ -27,9 +27,13 @@ public static class TextProcessorModel
 
 	public static void popChar()
 	{
-		if (Text[0].Length > 0)
+		try
 		{
 			Text[0] = Text[0].Remove(Text[0].Length - 1);
+		}
+		catch (System.ArgumentOutOfRangeException e)
+		{
+			Console.WriteLine(e.Message);
 		}
 	}
 }
