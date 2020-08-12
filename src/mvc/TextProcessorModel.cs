@@ -32,5 +32,11 @@ namespace fdte
 				System.Environment.Exit(0);
 			}
 		}
+
+		public static void AppendLine()
+		{
+			Text[Text.Count - 1] += "\r\n";
+			Text.Add("");
+		}
 	}
 }

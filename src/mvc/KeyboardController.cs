@@ -23,6 +23,10 @@ namespace fdte
 					TextProcessorModel.PopChar();
 					break;
 
+				case ConsoleKey.Enter:
+					TextProcessorModel.AppendLine();
+					break;
+
 				default:
 					TextProcessorModel.AppendChar(keyInfo.KeyChar);
 					break;
