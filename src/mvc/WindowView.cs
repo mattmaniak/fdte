@@ -10,7 +10,8 @@ namespace fdte
 {
 	public static class WindowView
 	{
-		const char _barBorder = '*';
+		private const char _cursor = '|';
+		private const char _barBorder = '*';
 
 		private static int Width
 		{
@@ -31,12 +32,12 @@ namespace fdte
 			{
 				if (y < TextProcessorModel.Text.Count)
 				{
-					Console.WriteLine(TextProcessorModel.Text[y]);
+					Console.Write(TextProcessorModel.Text[y]);
+					if (y == TextProcessorModel.Text.Count - 1)
+					{
+						Console.WriteLine(_cursor);
+					}
 				}
-				Console.WriteLine();
-			}
-			if (TextProcessorModel.Text[0] == "")
-			{
 				Console.WriteLine();
 			}
 			DrawHorizontalBar();
