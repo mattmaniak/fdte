@@ -8,6 +8,7 @@ namespace fdte
 		{
 			WindowView.Render();
 			WaitOnInput();
+			Console.Clear();
 		}
 
 		private static void WaitOnInput()
