@@ -11,7 +11,12 @@ namespace fdte
 	public static class WindowView
 	{
 		private const char _cursor = '|';
-		private const char _barBorder = '*';
+		private const char _lowerBarBorder = '_';
+		private const string _upperBarTitle = "Five Day Text Editor";
+		private static readonly int _minWidth = _upperBarTitle.Length;
+
+		private const int _barHeight = 1;
+		private const int _barsNumber = 2;
 
 		private static int Width
 		{
@@ -25,10 +30,9 @@ namespace fdte
 
 		public static void Render()
 		{
-			const int barsNumber = 2;
 
-			DrawHorizontalBar();
-			for (int y = 0; y < Height - barsNumber - TextProcessorModel.Text.Count; y++)
+			DrawUpperBar();
+			for (int y = 0; y < Height - (_barHeight * _barsNumber) - TextProcessorModel.Text.Count; y++)
 			{
 				if (y < TextProcessorModel.Text.Count)
 				{
@@ -40,7 +44,7 @@ namespace fdte
 				}
 				Console.WriteLine();
 			}
-			DrawHorizontalBar();
+			DrawLowerBar();
 		}
 
 		private static int TryToRetreiveWindowAxis(Axis axis)
@@ -68,12 +72,17 @@ namespace fdte
 			return axisValue;
 		}
 
-		private static void DrawHorizontalBar()
+		private static void DrawLowerBar()
 		{
 			for (int x = 0; x < Width; x++)
 			{
-				Console.Write(_barBorder);
+				Console.Write(_lowerBarBorder);
 			}
+		}
+
+		private static void DrawUpperBar()
+		{
+			Console.WriteLine(_upperBarTitle);
 		}
 	}
 }
