@@ -1,23 +1,32 @@
 ﻿using System;
 
-public static class KeyboardController
+namespace fdte
 {
-	public static void WaitOnInput()
+	public static class KeyboardController
 	{
-		ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-		switch (keyInfo.Key)
+		public static void Tick()
 		{
-			case ConsoleKey.Escape:
-				System.Environment.Exit(0);
-				break;
+			WindowView.Render();
+			WaitOnInput();
+		}
 
-			case ConsoleKey.Backspace:
-				TextProcessorModel.PopChar();
-				break;
+		private static void WaitOnInput()
+		{
+			ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+			switch (keyInfo.Key)
+			{
+				case ConsoleKey.Escape:
+					System.Environment.Exit(0);
+					break;
 
-			default:
-				TextProcessorModel.AppendChar(keyInfo.KeyChar);
-				break;
+				case ConsoleKey.Backspace:
+					TextProcessorModel.PopChar();
+					break;
+
+				default:
+					TextProcessorModel.AppendChar(keyInfo.KeyChar);
+					break;
+			}
 		}
 	}
 }

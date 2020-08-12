@@ -8,8 +8,7 @@ namespace fdte
 		{
 			for (;;)
 			{
-				WindowView.Render();
-				KeyboardController.WaitOnInput();
+				KeyboardController.Tick();
 			}
 		}
 	}

@@ -1,31 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public static class TextProcessorModel
+namespace fdte
 {
-	public static List<string> Text = new List<string>() {""};
-
-	public static void AppendChar(char character)
+	public static class TextProcessorModel
 	{
-		try
-		{
-			Text[Text.Count - 1] += character;
-		}
-		catch (System.ArgumentOutOfRangeException e)
-		{
-			Console.WriteLine(e.Message);
-		}
-	}
+		public static List<string> Text = new List<string>() { "" };
 
-	public static void PopChar()
-	{
-		try
+		public static void AppendChar(char character)
 		{
-			Text[0] = Text[0].Remove(Text[0].Length - 1);
+			try
+			{
+				Text[Text.Count - 1] += character;
+			}
+			catch (System.ArgumentOutOfRangeException e)
+			{
+				Console.WriteLine(e.Message);
+			}
 		}
-		catch (System.ArgumentOutOfRangeException e)
+
+		public static void PopChar()
 		{
-			Console.WriteLine(e.Message);
+			try
+			{
+				Text[0] = Text[0].Remove(Text[0].Length - 1);
+			}
+			catch (System.ArgumentOutOfRangeException e)
+			{
+				Console.WriteLine(e.Message);
+			}
 		}
 	}
 }
