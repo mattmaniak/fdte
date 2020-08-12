@@ -2,7 +2,7 @@
 
 public static class KeyboardController
 {
-	public static void waitOnInput()
+	public static void WaitOnInput()
 	{
 		ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 		switch (keyInfo.Key)
@@ -12,7 +12,7 @@ public static class KeyboardController
 				break;
 
 			case ConsoleKey.Backspace:
-				TextProcessorModel.popChar();
+				TextProcessorModel.PopChar();
 				break;
 
 			default:

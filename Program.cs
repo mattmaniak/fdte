@@ -6,11 +6,11 @@ namespace fdte
 	{
 		static void Main(string[] args)
 		{
-			TextProcessorModel.init();
+			TextProcessorModel.Init();
 			for (;;)
 			{
 				WindowView.Render();
-				KeyboardController.waitOnInput();
+				KeyboardController.WaitOnInput();
 			}
 		}
 	}

@@ -5,7 +5,7 @@ public static class TextProcessorModel
 {
 	public static List<string> Text = new List<string>();
 
-	public static void init()
+	public static void Init()
 	{
 		if (Text.Count == 0)
 		{
@@ -25,7 +25,7 @@ public static class TextProcessorModel
 		}
 	}
 
-	public static void popChar()
+	public static void PopChar()
 	{
 		try
 		{
