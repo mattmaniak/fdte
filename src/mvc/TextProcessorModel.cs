@@ -3,15 +3,7 @@ using System.Collections.Generic;
 
 public static class TextProcessorModel
 {
-	public static List<string> Text = new List<string>();
-
-	public static void Init()
-	{
-		if (Text.Count == 0)
-		{
-			Text.Add("");
-		}
-	}
+	public static List<string> Text = new List<string>() {""};
 
 	public static void AppendChar(char character)
 	{

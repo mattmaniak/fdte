@@ -6,7 +6,6 @@ namespace fdte
 	{
 		static void Main(string[] args)
 		{
-			TextProcessorModel.Init();
 			for (;;)
 			{
 				WindowView.Render();
