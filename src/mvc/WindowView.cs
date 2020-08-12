@@ -8,8 +8,7 @@ enum Axis
 
 namespace fdte
 {
-
-	public static class Window
+	public static class WindowView
 	{
 		const char _barBorder = '*';
 
@@ -28,14 +27,17 @@ namespace fdte
 			const int barsNumber = 2;
 
 			DrawHorizontalBar();
-			for (int y = 0; y < Height - barsNumber; y++)
+			for (int y = 0; y < Height - barsNumber - TextProcessorModel.Text.Count; y++)
 			{
-				Console.Write(_barBorder);
-				for (int x = 0; x < Width - barsNumber; x++)
+				if (y < TextProcessorModel.Text.Count)
 				{
-					Console.Write(' ');
+					Console.WriteLine(TextProcessorModel.Text[y]);
 				}
-				Console.Write(_barBorder);
+				Console.WriteLine();
+			}
+			if (TextProcessorModel.Text[0] == "")
+			{
+				Console.WriteLine();
 			}
 			DrawHorizontalBar();
 		}

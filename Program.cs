@@ -6,8 +6,12 @@ namespace fdte
 	{
 		static void Main(string[] args)
 		{
-			Window.Render();
-			Console.Read(); // Prevent from writing additional console info.
+			TextProcessorModel.init();
+			for (;;)
+			{
+				WindowView.Render();
+				KeyboardController.waitOnInput();
+			}
 		}
 	}
 }
