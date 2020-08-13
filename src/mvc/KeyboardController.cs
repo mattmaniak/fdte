@@ -13,25 +13,30 @@ namespace fdte
 
 		private static void WaitOnInput()
 		{
-			ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-			switch (keyInfo.Key)
+			ConsoleKeyInfo keyInfo;
+
+			try
 			{
-				case ConsoleKey.Escape:
-					System.Environment.Exit(0);
-					break;
+				switch ((keyInfo = Console.ReadKey(true)).Key)
+				{
+					case ConsoleKey.Escape:
+						System.Environment.Exit(0);
+						break;
 
-				case ConsoleKey.Backspace:
-					TextProcessorModel.PopChar();
-					break;
+					case ConsoleKey.Backspace:
+						TextProcessorModel.PopChar();
+						break;
 
-				case ConsoleKey.Enter:
-					TextProcessorModel.AppendLine();
-					break;
+					case ConsoleKey.Enter:
+						TextProcessorModel.AppendLine();
+						break;
 
-				default:
-					TextProcessorModel.AppendChar(keyInfo.KeyChar);
-					break;
+					default:
+						TextProcessorModel.AppendChar(keyInfo.KeyChar);
+						break;
+				}
 			}
+			catch (InvalidOperationException) { }
 		}
 	}
 }
