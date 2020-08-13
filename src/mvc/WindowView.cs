@@ -20,6 +20,8 @@ namespace fdte
 		private const int _barsNumber = 2;
 		private const int _textMinRenderedLines = 1;
 
+		private static bool _firstFrame = true;
+
 		private static int Width
 		{
 			get { return TryToRetreiveWindowAxisSize(Axis.X); }
@@ -32,24 +34,33 @@ namespace fdte
 
 		public static void Render()
 		{
-			if (IsConsoleWindowBigEnough())
+			if (!IsConsoleWindowBigEnough())
 			{
-				DrawUpperBar();
-
-				for (int y = 0; y < Height - (_barHeight * _barsNumber) - TextProcessorModel.Text.Count; y++)
-				{
-					if (y < TextProcessorModel.Text.Count)
-					{
-						Console.Write(TextProcessorModel.Text[y]);
-						if (y == TextProcessorModel.Text.Count - 1)
-						{
-							Console.WriteLine(_cursor);
-						}
-					}
-					Console.WriteLine();
-				}
-				DrawLowerBar();
+				return;
 			}
+			if (_firstFrame)
+			{
+				_firstFrame = false;
+			}
+			else
+			{
+				Console.Clear();
+			}
+			DrawUpperBar();
+
+			for (int y = 0; y < Height - (_barHeight * _barsNumber) - TextProcessorModel.Text.Count; y++)
+			{
+				if (y < TextProcessorModel.Text.Count)
+				{
+					Console.Write(TextProcessorModel.Text[y]);
+					if (y == TextProcessorModel.Text.Count - 1)
+					{
+						Console.WriteLine(_cursor);
+					}
+				}
+				Console.WriteLine();
+			}
+			DrawLowerBar();
 		}
 
 		private static int TryToRetreiveWindowAxisSize(Axis axis)
