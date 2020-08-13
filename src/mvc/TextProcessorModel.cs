@@ -22,20 +22,22 @@ namespace fdte
 
 		public static void PopChar()
 		{
-			try
+			int lineIndex = Text.Count - 1;
+
+			if (Text[lineIndex].Length > 0)
 			{
-				Text[0] = Text[0].Remove(Text[0].Length - 1);
+				Text[lineIndex] = Text[lineIndex].Remove(Text[lineIndex].Length - 1);
 			}
-			catch (System.ArgumentOutOfRangeException e)
+			else if (lineIndex > 0)
 			{
-				Console.Error.WriteLine(e.Message);
-				System.Environment.Exit(0);
+				Text.RemoveAt(lineIndex);
+				lineIndex--;
 			}
 		}
 
 		public static void AppendLine()
 		{
-			Text[Text.Count - 1] += "\r\n";
+//			Text[Text.Count - 1] += "\r\n";
 			Text.Add("");
 		}
 	}

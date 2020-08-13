@@ -30,7 +30,6 @@ namespace fdte
 
 		public static void Render()
 		{
-
 			DrawUpperBar();
 			for (int y = 0; y < Height - (_barHeight * _barsNumber) - TextProcessorModel.Text.Count; y++)
 			{
