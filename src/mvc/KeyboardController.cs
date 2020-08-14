@@ -19,7 +19,7 @@ namespace fdte
 				switch ((keyInfo = Console.ReadKey(true)).Key)
 				{
 					case ConsoleKey.Escape:
-						System.Environment.Exit(0);
+						Environment.Exit(0);
 						break;
 
 					case ConsoleKey.Backspace:
@@ -31,11 +31,27 @@ namespace fdte
 						break;
 
 					default:
+						if (IsShortcutParsed(keyInfo.KeyChar - '0'))
+						{
+							break;
+						}
+
 						TextProcessorModel.AppendChar(keyInfo.KeyChar);
 						break;
 				}
 			}
 			catch (InvalidOperationException) { }
+		}
+
+		private static bool IsShortcutParsed(int code)
+		{
+			switch (code)
+			{
+				case -29: // CTRL+S
+					FileHandler.Save("fdte.txt", TextProcessorModel.Text);
+					return true;
+			}
+			return false;
 		}
 	}
 }

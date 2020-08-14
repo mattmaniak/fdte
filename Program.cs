@@ -30,7 +30,7 @@ namespace fdte
 			}
 			if (shouldExit)
 			{
-				System.Environment.Exit(exitCode);
+				Environment.Exit(exitCode);
 			}
 		}
 	}
