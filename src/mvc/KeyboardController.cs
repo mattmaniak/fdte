@@ -54,11 +54,6 @@ namespace fdte
 					Console.Clear();
 					Environment.Exit(0);
 					return true;
-
-				// DEBUG
-				default:
-					Console.WriteLine(code);
-					break;
 			}
 			return false;
 		}
