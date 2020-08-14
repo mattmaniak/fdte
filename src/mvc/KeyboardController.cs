@@ -35,7 +35,6 @@ namespace fdte
 						{
 							break;
 						}
-
 						TextProcessorModel.AppendChar(keyInfo.KeyChar);
 						break;
 				}
@@ -50,6 +49,15 @@ namespace fdte
 				case -29: // CTRL+S
 					FileHandler.Save("fdte.txt", TextProcessorModel.Text);
 					return true;
+
+				case -31: // CTRL+Q
+					Environment.Exit(0);
+					return true;
+
+				// DEBUG
+				default:
+					Console.WriteLine(code);
+					break;
 			}
 			return false;
 		}
