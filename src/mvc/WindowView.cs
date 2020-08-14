@@ -18,6 +18,7 @@ namespace fdte
 
 		private const int _barHeight = 1;
 		private const int _barsNumber = 2;
+		private const int _cursorSize = 1;
 		private const int _textMinRenderedLines = 1;
 
 		private static bool _firstFrame = true;
@@ -48,7 +49,7 @@ namespace fdte
 			}
 			DrawUpperBar();
 
-			for (int y = 0; y < Height - (_barHeight * _barsNumber) - TextProcessorModel.Text.Count; y++)
+			for (int y = 0; y < Height - (_barHeight * _barsNumber) - _cursorSize; y++)
 			{
 				if (y < TextProcessorModel.Text.Count)
 				{
