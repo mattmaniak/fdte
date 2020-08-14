@@ -6,23 +6,32 @@ namespace fdte
 	{
 		public static void Main(string[] args)
 		{
-			HandleArgs(args);
-			TextProcessorModel.Text = FileHandler.Read("fdte.txt");
+			if (IsArgFilename(args))
+			{
+				TextProcessorModel.Text = FileHandler.Read(args[0]);
+			}
 			for (;;)
 			{
 				KeyboardController.Tick();
 			}
 		}
 
-		private static void HandleArgs(string[] args)
+		private static bool IsArgFilename(string[] args)
 		{
 			const int exitCode = 1;
 			bool shouldExit = false;
 
-			if ((args.Length > 0) && ((args[0] == "-h") || (args[0] == "--help")))
+			if (args.Length == 1)
 			{
-				Console.WriteLine("Usage: fdte [-h] [--help]");
-				shouldExit = true;
+				if ((args[0] == "-h") || (args[0] == "--help"))
+				{
+					Console.WriteLine("Usage: fdte [-h] [--help] [BASENAME/FILENAME]");
+					shouldExit = true;
+				}
+				else if (args[0][0] != '-')
+				{
+					return true;
+				}
 			}
 			else if (args.Length > 1)
 			{
@@ -33,6 +42,7 @@ namespace fdte
 			{
 				Environment.Exit(exitCode);
 			}
+			return false;
 		}
 	}
 }
