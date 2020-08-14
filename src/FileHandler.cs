@@ -9,18 +9,22 @@ namespace fdte
 	{
 		public static void Save(string basename, List<string> text)
 		{
-			using (FileStream file = File.Create(basename))
+			try
 			{
-				string contents = "";
-				byte[] serializedData;
-
-				for (int l = 0; l < text.Count; l++)
+				using (FileStream file = File.Create(basename))
 				{
-					contents += text[l] + "\r\n";
+					string contents = "";
+					byte[] serializedData;
+
+					for (int l = 0; l < text.Count; l++)
+					{
+						contents += text[l] + "\r\n";
+					}
+					serializedData = new UTF8Encoding(true).GetBytes(contents);
+					file.Write(serializedData, 0, serializedData.Length);
 				}
-				serializedData = new UTF8Encoding(true).GetBytes(contents);
-				file.Write(serializedData, 0, serializedData.Length);
 			}
+			catch (Exception) { }
 		}
 	}
 }
