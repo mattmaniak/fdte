@@ -31,7 +31,6 @@ namespace fdte
 			else if (lineIndex > 0)
 			{
 				Text.RemoveAt(lineIndex);
-				lineIndex--;
 			}
 		}
 
