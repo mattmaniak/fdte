@@ -13,10 +13,10 @@ namespace fdte
 			{
 				Text[Text.Count - 1] += character;
 			}
-			catch (System.ArgumentOutOfRangeException e)
+			catch (ArgumentOutOfRangeException e)
 			{
 				Console.Error.WriteLine(e.Message);
-				System.Environment.Exit(0);
+				Environment.Exit(0);
 			}
 		}
 
@@ -36,7 +36,6 @@ namespace fdte
 
 		public static void AppendLine()
 		{
-//			Text[Text.Count - 1] += "\r\n";
 			Text.Add("");
 		}
 	}
