@@ -51,6 +51,7 @@ namespace fdte
 					return true;
 
 				case -31: // CTRL+Q
+					Console.Clear();
 					Environment.Exit(0);
 					return true;
 
