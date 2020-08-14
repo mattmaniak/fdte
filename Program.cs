@@ -7,6 +7,7 @@ namespace fdte
 		public static void Main(string[] args)
 		{
 			HandleArgs(args);
+			TextProcessorModel.Text = FileHandler.Read("fdte.txt");
 			for (;;)
 			{
 				KeyboardController.Tick();

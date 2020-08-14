@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace fdte
@@ -25,6 +26,18 @@ namespace fdte
 				}
 			}
 			catch (Exception) { }
+		}
+
+		public static List<string> Read(string basename)
+		{
+			try
+			{
+				return File.ReadAllLines(basename).ToList();
+			}
+			catch (Exception)
+			{
+				return new List<string>() { "" };
+			}
 		}
 	}
 }
