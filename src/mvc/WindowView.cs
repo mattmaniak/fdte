@@ -20,6 +20,7 @@ namespace fdte
 		private const int _barHeight = 1;
 		private const int _barsNumber = 2;
 		private const int _cursorSize = 1;
+		private const int _index = 1;
 		private const int _textMinRenderedLines = 1;
 
 		private static bool _firstFrame = true;
@@ -108,7 +109,7 @@ namespace fdte
 				if (y < TextProcessorModel.Text.Count)
 				{
 					RenderLine(TextProcessorModel.Text[y]);
-					if (y == TextProcessorModel.Text.Count - 1)
+					if (y == TextProcessorModel.Text.Count - _index)
 					{
 						Console.WriteLine(_cursor);
 					}
@@ -119,10 +120,10 @@ namespace fdte
 
 		private static void ScrollVertically(int textAreaHeight)
 		{
-			for (int y = TextProcessorModel.Text.Count - textAreaHeight - 1; y < TextProcessorModel.Text.Count; y++)
+			for (int y = TextProcessorModel.Text.Count - textAreaHeight - _index; y < TextProcessorModel.Text.Count; y++)
 			{
 				RenderLine(TextProcessorModel.Text[y]);
-				if (y == TextProcessorModel.Text.Count - 1)
+				if (y == TextProcessorModel.Text.Count - _index)
 				{
 					Console.WriteLine(_cursor);
 				}
