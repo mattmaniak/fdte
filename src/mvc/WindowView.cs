@@ -107,7 +107,7 @@ namespace fdte
 			{
 				if (y < TextProcessorModel.Text.Count)
 				{
-					Console.Write(TextProcessorModel.Text[y]);
+					RenderLine(TextProcessorModel.Text[y]);
 					if (y == TextProcessorModel.Text.Count - 1)
 					{
 						Console.WriteLine(_cursor);
@@ -121,7 +121,7 @@ namespace fdte
 		{
 			for (int y = TextProcessorModel.Text.Count - textAreaHeight - 1; y < TextProcessorModel.Text.Count; y++)
 			{
-				Console.Write(TextProcessorModel.Text[y]);
+				RenderLine(TextProcessorModel.Text[y]);
 				if (y == TextProcessorModel.Text.Count - 1)
 				{
 					Console.WriteLine(_cursor);
@@ -130,6 +130,36 @@ namespace fdte
 				{
 					Console.WriteLine();
 				}
+			}
+		}
+
+		private static void RenderLine(string line)
+		{
+			int renderedLineWidth = 0;
+			int tabsAmount = 0;
+
+			for (int i = 0; i < line.Length; i++)
+			{
+				if (line[i] == '\t')
+				{
+					renderedLineWidth += 8;
+					tabsAmount++;
+				}
+				else
+				{
+					renderedLineWidth++;
+				}
+			}
+			if ((renderedLineWidth + _cursorSize) > Width) // Scroll horizontally.
+			{
+				for (int i = line.Length + _cursorSize - Width; i < line.Length; i++)
+				{
+					Console.Write(line[i]);
+				}
+			}
+			else
+			{
+				Console.Write(line);
 			}
 		}
 
