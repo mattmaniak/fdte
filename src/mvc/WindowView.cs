@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic.CompilerServices;
 using System;
 
 enum Axis
@@ -35,6 +36,8 @@ namespace fdte
 
 		public static void Render()
 		{
+			int textAreaHeight = Height - (_barHeight * _barsNumber) - _cursorSize;
+
 			if (!IsConsoleWindowBigEnough())
 			{
 				return;
@@ -49,17 +52,13 @@ namespace fdte
 			}
 			DrawUpperBar();
 
-			for (int y = 0; y < Height - (_barHeight * _barsNumber) - _cursorSize; y++)
+			if (TextProcessorModel.Text.Count <= textAreaHeight)
 			{
-				if (y < TextProcessorModel.Text.Count)
-				{
-					Console.Write(TextProcessorModel.Text[y]);
-					if (y == TextProcessorModel.Text.Count - 1)
-					{
-						Console.WriteLine(_cursor);
-					}
-				}
-				Console.WriteLine();
+				RenderSmallAmountOfText(textAreaHeight);
+			}
+			else
+			{
+				ScrollVertically(textAreaHeight);
 			}
 			DrawLowerBar();
 		}
@@ -100,6 +99,38 @@ namespace fdte
 		private static void DrawUpperBar()
 		{
 			Console.WriteLine(_upperBarTitle);
+		}
+
+		private static void RenderSmallAmountOfText(int textAreaHeight)
+		{
+			for (int y = 0; y < textAreaHeight; y++)
+			{
+				if (y < TextProcessorModel.Text.Count)
+				{
+					Console.Write(TextProcessorModel.Text[y]);
+					if (y == TextProcessorModel.Text.Count - 1)
+					{
+						Console.WriteLine(_cursor);
+					}
+				}
+				Console.WriteLine();
+			}
+		}
+
+		private static void ScrollVertically(int textAreaHeight)
+		{
+			for (int y = TextProcessorModel.Text.Count - textAreaHeight - 1; y < TextProcessorModel.Text.Count; y++)
+			{
+				Console.Write(TextProcessorModel.Text[y]);
+				if (y == TextProcessorModel.Text.Count - 1)
+				{
+					Console.WriteLine(_cursor);
+				}
+				else
+				{
+					Console.WriteLine();
+				}
+			}
 		}
 
 		private static bool IsConsoleWindowBigEnough()
